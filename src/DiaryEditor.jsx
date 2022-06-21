@@ -1,6 +1,6 @@
 import React, { useRef,useState } from "react";
 
-const DiaryEditor = () => {
+const DiaryEditor = ({ onCreate }) => {
 
   const authorInput = useRef();
   const contentInput = useRef();
@@ -35,7 +35,15 @@ const DiaryEditor = () => {
       return;
     }
 
+   // [ 새로운 일기를 추가하는 함수를 만듬 ]
+    onCreate(state.author, state.content, state.emotion); // 저장이 일어났을 때 호출한다.
     alert("저장 성공");
+    setState({
+      author : "",
+      content : "",
+      emotion : 1,
+    })
+    // 저장에 성공하면 초기화가 된다.
   };
 
 
